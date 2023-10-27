@@ -5,11 +5,11 @@ import { Component } from '@angular/core';
 import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
-  selector: 'app-modal-subject',
-  templateUrl: './modal-subject.component.html',
-  styleUrls: ['./modal-subject.component.css']
+  selector: 'app-modal-update-subject',
+  templateUrl: './modal-update-subject.component.html',
+  styleUrls: ['./modal-update-subject.component.css']
 })
-export class ModalSubjectComponent {
+export class ModalUpdateSubjectComponent {
 
   public addSubjectForm!: FormGroup<SubjecttViewModelForm>;
 
@@ -31,6 +31,6 @@ export class ModalSubjectComponent {
   }
 
   addSubject(){
-    
+
   }
 }
