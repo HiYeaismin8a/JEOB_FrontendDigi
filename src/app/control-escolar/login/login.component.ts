@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginViewModel, LoginViewModelForm } from 'src/app/interfaces/LoginViewModel';
 
 import { LoginService } from './../../services/login.service';
+import { LoginViewModelForm } from 'src/app/interfaces/LoginViewModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup<LoginViewModelForm>;
+  public loginForm!: FormGroup<LoginViewModelForm>;
 
   constructor(
     private loginService: LoginService,
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.getRawValue()).subscribe(student =>{
         this.router.navigate(['student']);
       })
-      
+
     };
   }
 }

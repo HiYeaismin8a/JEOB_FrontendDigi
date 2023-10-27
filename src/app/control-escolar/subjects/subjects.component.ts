@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
 
 @Component({
   selector: 'app-subjects',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class SubjectsComponent {
 
+  subjects: SubjectViewModel[] = [];
+
+  
 }

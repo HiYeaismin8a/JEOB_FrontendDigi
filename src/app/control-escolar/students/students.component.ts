@@ -2,6 +2,8 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { ModalStudentComponent } from './modals/modal-student/modal-student.component';
+import { ModalSubjectComponent } from '../subjects/modal-subject/modal-subject.component';
 import { StudentViewModel } from './../../interfaces/StudentViewModel';
 
 @Component({
@@ -12,18 +14,25 @@ import { StudentViewModel } from './../../interfaces/StudentViewModel';
 })
 export class StudentsComponent {
 
+  ref: DynamicDialogRef | undefined;
+  students: StudentViewModel[] = [];
+
   constructor(
-    public dialogService: DialogService, 
+    public dialogService: DialogService,
     public messageService: MessageService,
   ) {}
-  
-  ref: DynamicDialogRef | undefined;
 
+  ngOnDestroy() {
+    if (this.ref) {
+        this.ref.close();
+    }
+  }
 
-  show() {
-    this.ref = this.dialogService.open(StudentsComponent, {
-        header: 'Select a Product',
-        width: '70%',
+  showModalStudent() {
+    this.ref = this.dialogService.open(ModalStudentComponent, {
+        header: 'Agrega un estudiante',
+        width: '50%',
+        height: '65rem',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
         maximizable: true
@@ -38,11 +47,27 @@ export class StudentsComponent {
     this.ref.onMaximize.subscribe((value) => {
         this.messageService.add({ severity: 'info', summary: 'Maximized', detail: `maximized: ${value.maximized}` });
     });
-}
+  }
 
-ngOnDestroy() {
-    if (this.ref) {
-        this.ref.close();
-    }
-}
+
+
+  showModalSubject(){
+    this.ref = this.dialogService.open(ModalSubjectComponent, {
+      header: 'Agrega una materia',
+      width: '35%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+  });
+
+  this.ref.onClose.subscribe((student: StudentViewModel) => {
+      if (student) {
+          this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: student.nombre });
+      }
+  });
+
+  this.ref.onMaximize.subscribe((value) => {
+      this.messageService.add({ severity: 'info', summary: 'Maximized', detail: `maximized: ${value.maximized}` });
+  });
+  }
 }
