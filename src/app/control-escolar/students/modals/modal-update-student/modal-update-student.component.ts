@@ -3,16 +3,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { StudentViewModelForm } from 'src/app/interfaces/StudentViewModel';
 import { StudentsService } from 'src/app/services/students.service';
-import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
+import { SubjectViewModel } from './../../../../interfaces/SubjectViewModel';
 
 @Component({
-  selector: 'app-modal-student',
-  templateUrl: './modal-student.component.html',
-  styleUrls: ['./modal-student.component.css']
+  selector: 'app-modal-update-student',
+  templateUrl: './modal-update-student.component.html',
+  styleUrls: ['./modal-update-student.component.css']
 })
-export class ModalStudentComponent {
+export class ModalUpdateStudentComponent {
 
   public addStudentForm!: FormGroup<StudentViewModelForm>;
+  subjects: SubjectViewModel[] =[];
 
   constructor(
     private studentService: StudentsService,

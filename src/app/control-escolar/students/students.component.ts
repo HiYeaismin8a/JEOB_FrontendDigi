@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ModalStudentComponent } from './modals/modal-student/modal-student.component';
 import { ModalSubjectComponent } from '../subjects/modal-subject/modal-subject.component';
+import { ModalUpdateStudentComponent } from './modals/modal-update-student/modal-update-student.component';
 import { StudentViewModel } from './../../interfaces/StudentViewModel';
+import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
 
 @Component({
   selector: 'app-students',
@@ -30,9 +32,8 @@ export class StudentsComponent {
 
   showModalStudent() {
     this.ref = this.dialogService.open(ModalStudentComponent, {
-        header: 'Agrega un estudiante',
-        width: '50%',
-        height: '65rem',
+        header: 'Agregar un estudiante',
+        width: '35%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
         maximizable: true
@@ -53,8 +54,29 @@ export class StudentsComponent {
 
   showModalSubject(){
     this.ref = this.dialogService.open(ModalSubjectComponent, {
-      header: 'Agrega una materia',
+      header: 'Agregar una materia',
       width: '35%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+  });
+
+  this.ref.onClose.subscribe((subject: SubjectViewModel) => {
+      if (subject) {
+          this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: subject.name });
+      }
+  });
+
+  this.ref.onMaximize.subscribe((value) => {
+      this.messageService.add({ severity: 'info', summary: 'Maximized', detail: `maximized: ${value.maximized}` });
+  });
+  }
+
+  showModalUpdateStudent(){
+    this.ref = this.dialogService.open(ModalUpdateStudentComponent, {
+      header: 'Actualizar el siguiente estudiante',
+      width: '40%',
+      height: '40rem',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true

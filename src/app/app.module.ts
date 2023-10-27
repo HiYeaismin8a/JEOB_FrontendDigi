@@ -12,14 +12,17 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { HttpClientModule } from  '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
 import { LoginComponent } from './control-escolar/login/login.component';
-import { ModalAddSubjectComponent } from './control-escolar/students/modals/modal-add-subject/modal-add-subject.component';
 import { ModalStudentComponent } from './control-escolar/students/modals/modal-student/modal-student.component';
 import { ModalSubjectComponent } from './control-escolar/subjects/modal-subject/modal-subject.component';
+import { ModalUpdateStudentComponent } from './control-escolar/students/modals/modal-update-student/modal-update-student.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { StudentsComponent } from './control-escolar/students/students.component';
 import { SubjectsComponent } from './control-escolar/subjects/subjects.component';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { AssignSubjectsStudentsComponent } from './control-escolar/assign-subjects-students/assign-subjects-students.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,9 @@ import { ToastModule } from 'primeng/toast';
     StudentsComponent,
     SubjectsComponent,
     ModalSubjectComponent,
-    ModalAddSubjectComponent,
     ModalStudentComponent,
+    ModalUpdateStudentComponent,
+    AssignSubjectsStudentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ import { ToastModule } from 'primeng/toast';
     InputTextModule,
     DropdownModule,
     CommonModule,
-    SplitButtonModule
+    SplitButtonModule,
+    SidebarModule,
+    MultiSelectModule
   ],
   exports:[FormsModule, ReactiveFormsModule],
   providers: [],

@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'JEOB_27102023';
+
+  sidebarVisible: boolean = false;
+
+  constructor() { }
+  ngOnInit(): void {}
+
+
 }
