@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentViewModel, StudentViewModelForm } from 'src/app/interfaces/StudentViewModel';
-import { SubjectViewModel, SubjecttViewModelForm } from 'src/app/interfaces/SubjectViewModel';
+import { SubjectViewModel, SubjectViewModelForm } from 'src/app/interfaces/SubjectViewModel';
 
 import { Component } from '@angular/core';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
@@ -16,7 +16,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class ModalViewMoreInformationStudentComponent {
 
   public addStudentForm!: FormGroup<StudentViewModelForm>;
-  public addSubjectForm!: FormGroup<SubjecttViewModelForm>;
+  public addSubjectForm!: FormGroup<SubjectViewModelForm>;
   subjects: SubjectViewModel[]=[];
   student!: StudentViewModel;
   cost: number = 0;

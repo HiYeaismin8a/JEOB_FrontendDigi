@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SubjectViewModel, SubjecttViewModelForm } from 'src/app/interfaces/SubjectViewModel';
+import { SubjectViewModel, SubjectViewModelForm } from 'src/app/interfaces/SubjectViewModel';
 
 import { Component } from '@angular/core';
 import { SubjectsService } from 'src/app/services/subjects.service';
@@ -11,7 +11,7 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class ModalSubjectComponent {
 
-  public addSubjectForm!: FormGroup<SubjecttViewModelForm>;
+  public addSubjectForm!: FormGroup<SubjectViewModelForm>;
 
   subjects: SubjectViewModel[]= [];
 
@@ -27,7 +27,7 @@ export class ModalSubjectComponent {
   }
 
   ngOnInit() {
-    this.subjectService.getAllStudents().subscribe(data => this.subjects = data);
+    this.subjectService.getAllSubjects().subscribe(data => this.subjects = data);
   }
 
   addSubject(){

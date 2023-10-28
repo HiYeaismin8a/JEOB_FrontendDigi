@@ -2,7 +2,7 @@
   <head> </head>
 
   <body>
-    <form (ngSubmit)="addStudent()" [formGroup]="addStudentForm">
+    <form (ngSubmit)="updateStudent()" [formGroup]="updateStudentForm">
       <div class="row">
         <div class="row p-lg-3">
           <input type="text" pInputText formControlName="nombre" />
@@ -23,7 +23,7 @@
         </div>
         <div class="col-2">
           <button
-            type="submit" [disabled]="!addStudentForm.valid"
+            type="submit" [disabled]="!updateStudentForm.valid"
             class="btn btn-primary"
             style="margin-left: 13rem"
           >

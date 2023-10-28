@@ -13,9 +13,8 @@ import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
 })
 export class ModalUpdateStudentComponent{
 
+  public updateStudentForm!: FormGroup<StudentViewModelForm>;
   student!: StudentViewModel;
-  public addStudentForm!: FormGroup<StudentViewModelForm>;
-
 
   constructor(
     private studentService: StudentsService,
@@ -24,20 +23,19 @@ export class ModalUpdateStudentComponent{
   ){
 
     this.student = config.data.student;
-    this.addStudentForm = new FormGroup(
+    this.updateStudentForm = new FormGroup(
       {
         nombre: new FormControl(this.student.nombre,{nonNullable: true, validators: [Validators.required]}),
         apellidoPaterno: new FormControl(this.student.apellidoPaterno,{nonNullable: true, validators: [Validators.required]}),
         apellidoMaterno: new FormControl(this.student.apellidoMaterno,{nonNullable: true, validators: [Validators.required]})
-      }
-    );
+      });
 
   }
 
 
-  addStudent( ){
-   if(this.addStudentForm.valid){
-    this.studentService.updateStudent({idAlumno:this.student.idAlumno, ...this.addStudentForm.getRawValue()}).subscribe(response =>{
+  updateStudent( ){
+   if(this.updateStudentForm.valid){
+    this.studentService.updateStudent({idAlumno:this.student.idAlumno, ...this.updateStudentForm.getRawValue()}).subscribe(response =>{
       this.ref.close(response);
     });
    }

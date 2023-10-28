@@ -17,10 +17,10 @@
 
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="main row">
-      <div class="col-10">
-        <p-table [value]="students" [tableStyle]="{ 'min-width': '60rem' }">
+      <div>
+        <p-table [value]="students">
           <ng-template pTemplate="header">
-            <tr >
+            <tr>
               <th pSortableColumn="name" style="width: 20%">
                 Nombre <p-sortIcon field="name"></p-sortIcon>
               </th>
@@ -33,6 +33,7 @@
               <th>Editar</th>
               <th>Ver más</th>
               <th>Eliminar</th>
+              <th>Agregar</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-student>
@@ -63,36 +64,30 @@
                 ></button>
               </td>
               <td>
-                <button id="btnTrashSubject" pButton pRipple icon="pi pi-trash"> </button>
+                <p-button
+                  [rounded]="true"
+                  [text]="true"
+                  [raised]="true"
+                  type="button"
+                  [rounded]="true"
+                  severity="danger"
+                  icon="pi pi-trash"
+                  (click)="deleteStudent(student)"
+                ></p-button>
+              </td>
+              <td>
+                <p-button
+                  icon="pi pi-user-plus"
+                  [rounded]="true"
+                  [text]="true"
+                  [raised]="true"
+                  severity="info "
+                  (click)="showModalStudent(student)"
+                ></p-button>
               </td>
             </tr>
           </ng-template>
         </p-table>
-      </div>
-
-      <div class="row col-2 mt-5">
-        <div class="row" style="margin-bottom: 10rem">
-          <p-dropdown
-            [options]="subjects"
-            [(ngModel)]="selectedSubject"
-            optionLabel="name"
-          ></p-dropdown>
-        </div>
-
-        <div class="row" style="margin-left: 1.5rem">
-          <p-toast></p-toast>
-          <div>
-            <p-button
-              icon="pi pi-user-plus"
-              [rounded]="true"
-              [text]="true"
-              [raised]="true"
-              severity="info "
-              (click)="showModalStudent()"
-            ></p-button>
-          </div>
-
-        </div>
       </div>
     </div>
   </body>

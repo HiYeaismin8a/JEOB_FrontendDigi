@@ -7,6 +7,7 @@ import { ModalUpdateSubjectComponent } from './modals/modal-update-subject/modal
 import { ModalViewMoreComponent } from './modals/modal-view-more/modal-view-more.component';
 import { StudentViewModel } from 'src/app/interfaces/StudentViewModel';
 import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
+import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
   selector: 'app-subjects',
@@ -25,20 +26,24 @@ export class SubjectsComponent implements OnInit {
   constructor(
     public dialogService: DialogService,
     public messageService: MessageService,
+    private subjectService: SubjectsService,
   ) {}
 
   ngOnInit() {
-    this.student = [
-        { idAlumno: 1, nombre: 'New York', apellidoPaterno: 'Ochoa',apellidoMaterno:'Benitez' },
-        { idAlumno:2, nombre: 'Rome', apellidoPaterno:'Jazmin',apellidoMaterno:'Benitez'},
-        { idAlumno:3, nombre: 'London', apellidoPaterno:'Kaze',apellidoMaterno:'Benitez'},
-    ];
+    this.readAllSubjects();
 }
 
   ngOnDestroy() {
     if (this.ref) {
         this.ref.close();
     }
+  }
+
+  readAllSubjects() {
+    this.subjectService.getAllSubjects().subscribe((response) => {
+      this.subjects = [];
+      this.subjects = response;
+    });
   }
 
   showModalSubject() {
@@ -69,13 +74,14 @@ export class SubjectsComponent implements OnInit {
     });
   }
 
-  showModalUpdateSubject() {
+  showModalUpdateSubject(subject: SubjectViewModel) {
     this.ref = this.dialogService.open(ModalUpdateSubjectComponent, {
       header: 'Actualizar la siguiente materia',
       width: '35%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
+      data: {subject: {... subject}}
     });
 
     this.ref.onClose.subscribe((subject: SubjectViewModel) => {
@@ -124,4 +130,13 @@ export class SubjectsComponent implements OnInit {
       });
     });
   }
+
+
+  deleteSubject(student:StudentViewModel){
+    this.subjectService.deleteSubject(student.idAlumno).subscribe(response => {
+      this.readAllSubjects();
+
+    });
+  }
+
 }

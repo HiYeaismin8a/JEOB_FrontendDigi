@@ -27,8 +27,8 @@
           </th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body">
-        <tr *ngFor="let subject of subjects">
+      <ng-template pTemplate="body" let-subject>
+        <tr >
           <td>{{ subject.nombre }}</td>
           <td>
               <!--VALOR QUE TRAE EL ASIGNADO Y SIN ASIGNAR-->

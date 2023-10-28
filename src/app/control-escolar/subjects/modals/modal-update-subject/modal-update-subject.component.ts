@@ -1,5 +1,6 @@
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SubjectViewModel, SubjecttViewModelForm } from 'src/app/interfaces/SubjectViewModel';
+import { SubjectViewModel, SubjectViewModelForm } from 'src/app/interfaces/SubjectViewModel';
 
 import { Component } from '@angular/core';
 import { SubjectsService } from 'src/app/services/subjects.service';
@@ -11,26 +12,28 @@ import { SubjectsService } from 'src/app/services/subjects.service';
 })
 export class ModalUpdateSubjectComponent {
 
-  public addSubjectForm!: FormGroup<SubjecttViewModelForm>;
-
-  subjects: SubjectViewModel[]= [];
+  public updateSubjectForm!: FormGroup<SubjectViewModelForm>;
+  subject!: SubjectViewModel;
 
   constructor(
     private subjectService: SubjectsService,
+    private ref: DynamicDialogRef,
+    private config: DynamicDialogConfig,
   ){
-    this.addSubjectForm = new FormGroup(
+    this.subject = config.data.student;
+    this.updateSubjectForm = new FormGroup(
       {
-        nombre: new FormControl("",{nonNullable: true, validators: [Validators.required]}),
-        costo: new FormControl(0,{nonNullable: true, validators: [Validators.required]}),
-      }
-    );
+        nombre: new FormControl(this.subject.nombre,{nonNullable: true, validators: [Validators.required]}),
+        costo: new FormControl(this.subject.costo,{nonNullable: true, validators: [Validators.required]}),
+      });
   }
 
-  ngOnInit() {
-    this.subjectService.getAllStudents().subscribe(data => this.subjects = data);
+  updateStudent(){
+    if(this.updateSubjectForm.valid){
+      this.subjectService.updateSubject({idMateria:this.subject.idMateria, ...this.updateSubjectForm.getRawValue()}).subscribe(response =>{
+        this.ref.close(response);
+      });
+    }
   }
 
-  addSubject(){
-
-  }
 }

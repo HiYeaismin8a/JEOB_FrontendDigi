@@ -13,7 +13,28 @@ export class SubjectsService {
     private http: HttpClient,
   ) { }
 
-  getAllStudents(): Observable<SubjectViewModel[]> {
-    return this.http.get<SubjectViewModel[]>(constants.urlApi + '/student/GetAllStudents');
+  getAllSubjects(): Observable<SubjectViewModel[]> {
+
+    return this.http.get<SubjectViewModel[]>(`${constants.urlApi}/subject/GetAllMateria`);
+  }
+
+  getStudentByIdSubject(idSubject: number){
+
+    return this.http.get<SubjectViewModel[]>(`${constants.urlApi}/subject/GetStudentByIdSubject/${idSubject}`);
+  }
+
+  addSubject(subject:SubjectViewModel): Observable<SubjectViewModel>{
+
+    return this.http.post<SubjectViewModel>(`${constants.urlApi}/subject/PostSubject/`,subject);
+  }
+
+  updateSubject(subject: SubjectViewModel): Observable<SubjectViewModel>{
+
+    return this.http.put<SubjectViewModel>(`${constants.urlApi}/subject/UpdatesubSubject/`,subject);
+  }
+
+  deleteSubject(id: number): Observable<Boolean>{
+
+      return this.http.delete<boolean>(`${constants.urlApi}/subject/DeleteSubject`);
   }
 }

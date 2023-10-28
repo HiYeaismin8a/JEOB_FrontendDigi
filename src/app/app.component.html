@@ -1,13 +1,21 @@
 <div class="buttonSlideNav">
   <p-sidebar  [(visible)]="sidebarVisible" position="right" >
-    <div>
-      <a href="../app/control-escolar/students/students.component.html"> Estudiantes </a>
+    <div class="mt-1">
+      <h5>
+        <a [routerLink]="['student']"> Estudiantes </a>
+      </h5>
     </div>
-    <div>
-      <a href="../app/control-escolar/subjects/subjects.component.html"> Materias </a>
+    <div class="mt-5">
+      <h5>
+        <a [routerLink]="['subject']"> Materias </a>
+      </h5>
+
     </div>
-    <div>
-      <a href="../app/control-escolar/subjects/subjects.component.html"> Enlazar Materia-Estudiante </a>
+    <div class="mt-5">
+      <h5>
+        <a [routerLink]="['subject-student']"> Enlazar Materia-Estudiante </a>
+      </h5>
+
     </div>
   </p-sidebar>
 

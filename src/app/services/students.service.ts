@@ -18,7 +18,8 @@ export class StudentsService {
 
     return this.http.get<StudentViewModel[]>(`${constants.urlApi}/student/GetAllStudents`);
   }
-
+  //En la vista de los esudiantes se despliega un modal donde muestra las
+  //materias por un alumno en específico.
   getSubjectByIdStudent(idStudent: number){
 
     return this.http.get<SubjectViewModel[]>(`${constants.urlApi}/student/GetSubjectByIdStudent/${idStudent}`);

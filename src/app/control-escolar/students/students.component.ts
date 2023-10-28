@@ -13,7 +13,7 @@ import { SubjectViewModel } from 'src/app/interfaces/SubjectViewModel';
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css'],
-  providers: [DialogService, MessageService],
+  providers: [DialogService, MessageService]
 })
 export class StudentsComponent implements OnInit {
   students: StudentViewModel[] = [];
@@ -24,11 +24,11 @@ export class StudentsComponent implements OnInit {
     public dialogService: DialogService,
     public messageService: MessageService,
     private studentService: StudentsService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.readAllStudent();
-    this.subjects = [];
   }
 
   readAllStudent() {
@@ -36,35 +36,7 @@ export class StudentsComponent implements OnInit {
       this.students = [];
       this.students = response;
     });
-  }
 
-  showModalStudent() {
-    
-    const ref = this.dialogService.open(ModalStudentComponent, {
-      header: 'Agregar un estudiante',
-      width: '35%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: true,
-    });
-
-    ref.onClose.subscribe((student: StudentViewModel) => {
-      if (student) {
-        this.messageService.add({
-          severity: 'info',
-          summary: 'Product Selected',
-          detail: student.nombre,
-        });
-      }
-    });
-
-    ref.onMaximize.subscribe((value) => {
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Maximized',
-        detail: `maximized: ${value.maximized}`,
-      });
-    });
   }
 
   showModalUpdateStudent(student: StudentViewModel) {
@@ -95,6 +67,8 @@ export class StudentsComponent implements OnInit {
         detail: `maximized: ${value.maximized}`,
       });
     });
+
+    this.readAllStudent();
   }
 
   showModalViewMoreInformation(student: StudentViewModel) {
@@ -128,4 +102,42 @@ export class StudentsComponent implements OnInit {
       });
     });
   }
+
+  deleteStudent(student:StudentViewModel){
+    this.studentService.deleteStudent(student.idAlumno).subscribe(response => {
+      this.readAllStudent();
+
+    });
+  }
+
+
+  showModalStudent(student: StudentViewModel) {
+    const ref = this.dialogService.open(ModalStudentComponent, {
+      header: 'Agregar un estudiante',
+      width: '35%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true,
+      data: {student: {...student} }
+    });
+
+    ref.onClose.subscribe((student: StudentViewModel) => {
+      if (student) {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Product Selected',
+          detail: student.nombre,
+        });
+      }
+    });
+
+    ref.onMaximize.subscribe((value) => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Maximized',
+        detail: `maximized: ${value.maximized}`,
+      });
+    });
+  }
+
 }

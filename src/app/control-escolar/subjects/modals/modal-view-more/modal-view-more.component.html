@@ -16,8 +16,8 @@
             </th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body">
-          <tr *ngFor="let student of students">
+        <ng-template pTemplate="body" let-student>
+          <tr >
             <td>{{ student.nombre }}</td>
             <td>{{ student.apellidoPaterno}}</td>
             <td>{{ student.apellidoMaterno}}</td>

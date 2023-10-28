@@ -11,6 +11,6 @@ export class ModalViewMoreComponent {
   students: StudentViewModel[] = [];
 
   constructor(){
-    
+
   }
 }

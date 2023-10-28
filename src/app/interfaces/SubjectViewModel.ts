@@ -8,7 +8,7 @@ export interface SubjectViewModel {
 
 }
 
-export interface SubjecttViewModelForm{
-  nombre:     FormControl<string>;
+export interface SubjectViewModelForm{
+  nombre:    FormControl<string>;
   costo:     FormControl<number>;
 }
