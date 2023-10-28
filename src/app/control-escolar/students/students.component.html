@@ -16,7 +16,6 @@
   </head>
 
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-
     <div class="main row">
       <div class="col-10">
         <p-table [value]="students" [tableStyle]="{ 'min-width': '60rem' }">
@@ -32,6 +31,7 @@
                 Apellido Materno <p-sortIcon field="name"></p-sortIcon>
               </th>
               <th>Editar</th>
+              <th>Ver más</th>
               <th>Eliminar</th>
             </tr>
           </ng-template>
@@ -40,35 +40,47 @@
               <td>{{ student.nombre }}</td>
               <td>{{ student.apellidoPaterno }}</td>
               <td>{{ student.apellidoMaterno }}</td>
+              <td>
+                <p-button
+                  icon="pi pi-user-edit"
+                  [rounded]="true"
+                  [text]="true"
+                  [raised]="true"
+                  severity="info"
+                  (click)="showModalUpdateStudent()"
+                ></p-button>
+              </td>
+              <td>
+                <button
+                  id="btnViewMore"
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-eye"
+                  pInitEditableRow
+                  (click)="showModalViewMoreInformation()"
+                  class="btnEdits p-button-rounded p-button-text"
+                ></button>
+              </td>
+              <td>
+                <button id="btnTrashSubject" icon="pi pi-trash">
+                  Eliminar
+                </button>
+              </td>
             </tr>
           </ng-template>
         </p-table>
       </div>
 
-      <div class="dropdown row col-2 mt-5">
+      <div class="row col-2 mt-5">
         <div class="row" style="margin-bottom: 10rem">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li>
-              <button class="dropdown-item" type="button">
-                Another action
-              </button>
-            </li>
-            <li>
-              <button class="dropdown-item" type="button">
-                Something else here
-              </button>
-            </li>
-          </ul>
+          <p-dropdown
+            [options]="subjects"
+            [(ngModel)]="selectedSubject"
+            optionLabel="name"
+          ></p-dropdown>
         </div>
+
         <div class="row" style="margin-left: 1.5rem">
           <p-toast></p-toast>
           <div>
@@ -92,10 +104,8 @@
               (click)="showModalUpdateStudent()"
             ></p-button>
           </div>
-
         </div>
       </div>
     </div>
-    
   </body>
 </html>

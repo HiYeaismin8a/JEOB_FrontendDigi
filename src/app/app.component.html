@@ -1,14 +1,22 @@
 <div class="buttonSlideNav">
   <p-sidebar  [(visible)]="sidebarVisible" position="right" >
-    <a href="../app/control-escolar/students/students.component.html"> Estudiantes </a>
-    <a href="../app/control-escolar/subjects/subjects.component.html"> Materias </a>
-    <a href="../app/control-escolar/subjects/subjects.component.html"> Enlazar Materia-Estudiante </a>
+    <div>
+      <a href="../app/control-escolar/students/students.component.html"> Estudiantes </a>
+    </div>
+    <div>
+      <a href="../app/control-escolar/subjects/subjects.component.html"> Materias </a>
+    </div>
+    <div>
+      <a href="../app/control-escolar/subjects/subjects.component.html"> Enlazar Materia-Estudiante </a>
+    </div>
   </p-sidebar>
+
   <button
       (click)="sidebarVisible = true"
       class="header__button">
       <i class="pi pi-bars" style="font-size: 2rem"></i>
   </button>
+
 </div>
 
 <router-outlet></router-outlet>

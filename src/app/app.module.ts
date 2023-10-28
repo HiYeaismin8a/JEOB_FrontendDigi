@@ -17,6 +17,8 @@ import { ModalStudentComponent } from './control-escolar/students/modals/modal-s
 import { ModalSubjectComponent } from './control-escolar/subjects/modals/modal-subject/modal-subject.component';
 import { ModalUpdateStudentComponent } from './control-escolar/students/modals/modal-update-student/modal-update-student.component';
 import { ModalUpdateSubjectComponent } from './control-escolar/subjects/modals/modal-update-subject/modal-update-subject.component';
+import { ModalViewMoreComponent } from './control-escolar/subjects/modals/modal-view-more/modal-view-more.component';
+import { ModalViewMoreInformationStudentComponent } from './control-escolar/students/modals/modal-view-more-information-student/modal-view-more-information-student.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SidebarModule } from 'primeng/sidebar';
 import { SplitButtonModule } from 'primeng/splitbutton';
@@ -36,6 +38,8 @@ import { ToastModule } from 'primeng/toast';
     ModalUpdateStudentComponent,
     AssignSubjectsStudentsComponent,
     ModalUpdateSubjectComponent,
+    ModalViewMoreComponent,
+    ModalViewMoreInformationStudentComponent,
   ],
   imports: [
     BrowserModule,

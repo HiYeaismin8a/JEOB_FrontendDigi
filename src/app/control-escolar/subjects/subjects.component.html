@@ -28,6 +28,7 @@
                 Cost <p-sortIcon field="price"></p-sortIcon>
               </th>
               <th>Editar</th>
+              <th>Ver más</th>
               <th>Eliminar</th>
             </tr>
           </ng-template>
@@ -35,38 +36,52 @@
             <tr *ngFor="let subject of subjects">
               <td>{{ subject.name }}</td>
               <td>{{ subject.cost | currency : "USD" }}</td>
+              <td>
+                <button
+                  id="btnEdit"
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="fas fa-pen"
+                  pInitEditableRow
+                  (click)="showModalUpdateSubject()"
+                  class="btnEdits p-button-rounded p-button-text"
+                ></button>
+              </td>
+
+              <td>
+                <button
+                  id="btnViewMore"
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-eye"
+                  pInitEditableRow
+                  (click)="showModalViewMoreInformation()"
+                  class="btnEdits p-button-rounded p-button-text"
+                ></button>
+              </td>
+              <td>
+                <button id="btnTrashSubject" icon="pi pi-trash">
+                  Eliminar
+                </button>
+              </td>
             </tr>
           </ng-template>
         </p-table>
       </div>
 
-      <div class="dropdown row col-2 mt-5">
+      <div class="row col-2 mt-5">
         <div class="row" style="margin-bottom: 10rem">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="button">Action</button></li>
-            <li>
-              <button class="dropdown-item" type="button">
-                Another action
-              </button>
-            </li>
-            <li>
-              <button class="dropdown-item" type="button">
-                Something else here
-              </button>
-            </li>
-          </ul>
+          <p-dropdown
+            [options]="student"
+            [(ngModel)]="selectedStudent"
+            optionLabel="name"
+          ></p-dropdown>
         </div>
+
         <div class="row" style="margin-left: 1.5rem">
           <p-toast></p-toast>
-
           <div class="mt-3">
             <p-button
               id="testButton"
@@ -77,7 +92,7 @@
               severity="info"
               (click)="showModalSubject()"
             >
-          </p-button>
+            </p-button>
           </div>
 
           <div>
@@ -90,10 +105,8 @@
               (click)="showModalUpdateSubject()"
             ></p-button>
           </div>
-
         </div>
       </div>
     </div>
-
   </body>
 </html>
