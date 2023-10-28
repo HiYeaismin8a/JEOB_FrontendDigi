@@ -20,8 +20,8 @@ export class ModalSubjectComponent {
   ){
     this.addSubjectForm = new FormGroup(
       {
-        name: new FormControl("",{nonNullable: true, validators: [Validators.required]}),
-        cost: new FormControl(0,{nonNullable: true, validators: [Validators.required]}),
+        nombre: new FormControl("",{nonNullable: true, validators: [Validators.required]}),
+        costo: new FormControl(0,{nonNullable: true, validators: [Validators.required]}),
       }
     );
   }

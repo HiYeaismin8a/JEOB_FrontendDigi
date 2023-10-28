@@ -1,6 +1,4 @@
 .buttonSlideNav {
-  position: absolute;
-  right: 0;
-  top: 0;
-  float: right;
+  text-align: right;
+  margin: 0.5rem 1rem;
 }

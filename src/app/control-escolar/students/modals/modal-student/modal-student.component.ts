@@ -21,8 +21,7 @@ export class ModalStudentComponent {
       {
         nombre: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
         apellidoPaterno: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
-        apellidoMaterno: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
-        materias: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
+        apellidoMaterno: new FormControl('',{nonNullable: true, validators: [Validators.required]})
       }
     );
   }

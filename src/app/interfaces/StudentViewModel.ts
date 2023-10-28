@@ -13,5 +13,4 @@ export interface StudentViewModelForm{
   nombre:     FormControl<string>;
   apellidoPaterno: FormControl<string>;
   apellidoMaterno: FormControl<string>;
-  materias: FormControl<string>;
 }

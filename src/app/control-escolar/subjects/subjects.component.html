@@ -34,8 +34,8 @@
           </ng-template>
           <ng-template pTemplate="body">
             <tr *ngFor="let subject of subjects">
-              <td>{{ subject.name }}</td>
-              <td>{{ subject.cost | currency : "USD" }}</td>
+              <td>{{ subject.nombre }}</td>
+              <td>{{ subject.costo | currency : "USD" }}</td>
               <td>
                 <button
                   id="btnEdit"

@@ -20,7 +20,7 @@
       <div class="col-10">
         <p-table [value]="students" [tableStyle]="{ 'min-width': '60rem' }">
           <ng-template pTemplate="header">
-            <tr>
+            <tr >
               <th pSortableColumn="name" style="width: 20%">
                 Nombre <p-sortIcon field="name"></p-sortIcon>
               </th>
@@ -35,8 +35,8 @@
               <th>Eliminar</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body">
-            <tr *ngFor="let student of students">
+          <ng-template pTemplate="body" let-student>
+            <tr [pEditableRow]="student">
               <td>{{ student.nombre }}</td>
               <td>{{ student.apellidoPaterno }}</td>
               <td>{{ student.apellidoMaterno }}</td>
@@ -47,7 +47,7 @@
                   [text]="true"
                   [raised]="true"
                   severity="info"
-                  (click)="showModalUpdateStudent()"
+                  (click)="showModalUpdateStudent(student)"
                 ></p-button>
               </td>
               <td>
@@ -58,14 +58,12 @@
                   type="button"
                   icon="pi pi-eye"
                   pInitEditableRow
-                  (click)="showModalViewMoreInformation()"
+                  (click)="showModalViewMoreInformation(student)"
                   class="btnEdits p-button-rounded p-button-text"
                 ></button>
               </td>
               <td>
-                <button id="btnTrashSubject" icon="pi pi-trash">
-                  Eliminar
-                </button>
+                <button id="btnTrashSubject" pButton pRipple icon="pi pi-trash"> </button>
               </td>
             </tr>
           </ng-template>
@@ -94,16 +92,6 @@
             ></p-button>
           </div>
 
-          <div>
-            <p-button
-              icon="pi pi-user-edit"
-              [rounded]="true"
-              [text]="true"
-              [raised]="true"
-              severity="info"
-              (click)="showModalUpdateStudent()"
-            ></p-button>
-          </div>
         </div>
       </div>
     </div>

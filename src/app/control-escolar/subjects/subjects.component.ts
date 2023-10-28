@@ -55,7 +55,7 @@ export class SubjectsComponent implements OnInit {
         this.messageService.add({
           severity: 'info',
           summary: 'Product Selected',
-          detail: subject.name,
+          detail: subject.nombre,
         });
       }
     });
@@ -83,7 +83,7 @@ export class SubjectsComponent implements OnInit {
         this.messageService.add({
           severity: 'info',
           summary: 'Product Selected',
-          detail: subject.name,
+          detail: subject.nombre,
         });
       }
     });
@@ -111,7 +111,7 @@ export class SubjectsComponent implements OnInit {
         this.messageService.add({
           severity: 'info',
           summary: 'Product Selected',
-          detail: subject.name,
+          detail: subject.nombre,
         });
       }
     });
