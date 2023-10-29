@@ -1,5 +1,5 @@
 <header>
-  <label>El alumno {{student.nombre}} tiene las siguientes materias:</label>
+  <label>El alumno {{ student.nombre }} tiene las siguientes materias:</label>
 </header>
 
 <div class="main">
@@ -17,14 +17,13 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-subject>
-          <tr >
+          <tr>
             <td>{{ subject.nombre }}</td>
             <td>{{ subject.costo | currency : "USD" }}</td>
           </tr>
         </ng-template>
       </p-table>
-      <span>Costo total: {{cost | currency : "USD"}} </span>
+      <span>Costo total: {{ cost | currency : "USD" }} </span>
     </div>
-
   </div>
 </div>

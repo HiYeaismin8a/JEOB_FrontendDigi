@@ -1,36 +1,48 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SubjectViewModel, SubjectViewModelForm } from 'src/app/interfaces/SubjectViewModel';
+import {
+  SubjectViewModel,
+  SubjectViewModelForm,
+} from 'src/app/interfaces/SubjectViewModel';
 
 import { Component } from '@angular/core';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
   selector: 'app-modal-subject',
   templateUrl: './modal-subject.component.html',
-  styleUrls: ['./modal-subject.component.css']
+  styleUrls: ['./modal-subject.component.css'],
 })
 export class ModalSubjectComponent {
-
   public addSubjectForm!: FormGroup<SubjectViewModelForm>;
-
-  subjects: SubjectViewModel[]= [];
 
   constructor(
     private subjectService: SubjectsService,
-  ){
-    this.addSubjectForm = new FormGroup(
-      {
-        nombre: new FormControl("",{nonNullable: true, validators: [Validators.required]}),
-        costo: new FormControl(0,{nonNullable: true, validators: [Validators.required]}),
-      }
-    );
+    private ref: DynamicDialogRef
+  ) {
+    this.addSubjectForm = new FormGroup({
+      nombre: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      costo: new FormControl(0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    });
   }
 
-  ngOnInit() {
-    this.subjectService.getAllSubjects().subscribe(data => this.subjects = data);
+  addSubject() {
+    this.subjectService
+      .addSubject(this.addSubjectForm.getRawValue())
+      .subscribe((response) => {
+        this.ref.close(response);
+      });
   }
 
-  addSubject(){
-
+  closeModals() {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 }

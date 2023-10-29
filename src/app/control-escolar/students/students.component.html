@@ -17,77 +17,78 @@
 
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="main row">
-      <div>
-        <p-table [value]="students">
-          <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="name" style="width: 20%">
-                Nombre <p-sortIcon field="name"></p-sortIcon>
-              </th>
-              <th pSortableColumn="name" style="width: 20%">
-                Apellido Paterno <p-sortIcon field="name"></p-sortIcon>
-              </th>
-              <th pSortableColumn="name" style="width: 20%">
-                Apellido Materno <p-sortIcon field="name"></p-sortIcon>
-              </th>
-              <th>Editar</th>
-              <th>Ver más</th>
-              <th>Eliminar</th>
-              <th>Agregar</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-student>
-            <tr [pEditableRow]="student">
-              <td>{{ student.nombre }}</td>
-              <td>{{ student.apellidoPaterno }}</td>
-              <td>{{ student.apellidoMaterno }}</td>
-              <td>
-                <p-button
-                  icon="pi pi-user-edit"
-                  [rounded]="true"
-                  [text]="true"
-                  [raised]="true"
-                  severity="info"
-                  (click)="showModalUpdateStudent(student)"
-                ></p-button>
-              </td>
-              <td>
-                <button
-                  id="btnViewMore"
-                  pButton
-                  pRipple
-                  type="button"
-                  icon="pi pi-eye"
-                  pInitEditableRow
-                  (click)="showModalViewMoreInformation(student)"
-                  class="btnEdits p-button-rounded p-button-text"
-                ></button>
-              </td>
-              <td>
-                <p-button
-                  [rounded]="true"
-                  [text]="true"
-                  [raised]="true"
-                  type="button"
-                  [rounded]="true"
-                  severity="danger"
-                  icon="pi pi-trash"
-                  (click)="deleteStudent(student)"
-                ></p-button>
-              </td>
-              <td>
-                <p-button
-                  icon="pi pi-user-plus"
-                  [rounded]="true"
-                  [text]="true"
-                  [raised]="true"
-                  severity="info "
-                  (click)="showModalStudent(student)"
-                ></p-button>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
+      <div class="row">
+        <div class="col-10">
+          <p-table [value]="students">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="name" style="width: 20%" id>
+                  Nombre <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name" style="width: 20%">
+                  Apellido Paterno <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name" style="width: 20%">
+                  Apellido Materno <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th>Editar</th>
+                <th>Ver más</th>
+                <th>Eliminar</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-student>
+              <tr [pEditableRow]="student">
+                <td>{{ student.nombre }}</td>
+                <td>{{ student.apellidoPaterno }}</td>
+                <td>{{ student.apellidoMaterno }}</td>
+                <td>
+                  <p-button
+                    icon="pi pi-user-edit"
+                    [rounded]="true"
+                    [text]="true"
+                    [raised]="true"
+                    severity="info"
+                    (click)="showModalUpdateStudent(student)"
+                  ></p-button>
+                </td>
+                <td>
+                  <button
+                    id="btnViewMore"
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-eye"
+                    pInitEditableRow
+                    (click)="showModalViewMoreInformation(student)"
+                    class="btnEdits p-button-rounded p-button-text"
+                  ></button>
+                </td>
+                <td>
+                  <p-button
+                    [rounded]="true"
+                    [text]="true"
+                    [raised]="true"
+                    type="button"
+                    [rounded]="true"
+                    severity="danger"
+                    icon="pi pi-trash"
+                    (click)="deleteStudent(student)"
+                  ></p-button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="col-2">
+          <p-button
+            icon="pi pi-user-plus"
+            [rounded]="true"
+            [text]="true"
+            [raised]="true"
+            severity="info "
+            (click)="showCreateStudent()"
+          ></p-button>
+        </div>
       </div>
     </div>
   </body>

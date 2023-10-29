@@ -30,6 +30,10 @@ export class StudentsService {
     return this.http.post<StudentViewModel>(`${constants.urlApi}/student/PostStudent/`, student);
   }
 
+  postSubject(id:number, materias: number[]):Observable<Boolean>{
+    return this.http.post<boolean>(`${constants.urlApi}/student/PostSubject/${id}`, materias);
+  }
+
   updateStudent(student: StudentViewModel): Observable<StudentViewModel>{
 
     return this.http.put<StudentViewModel>(`${constants.urlApi}/student/UpdateStudent/`,student);

@@ -24,7 +24,7 @@
 
     <title>Login Figma | Templune</title>
   </head>
-  
+
   <body class="bg-dark">
     <section>
       <div class="row g-0">
@@ -99,53 +99,58 @@
           <div class="align-self-center w-100 px-lg-5 py-lg-2 p-1">
             <h2 class="font-weight-bold mb-4 ml-5">Bienvenido</h2>
 
-            <form class="mb-1"  (ngSubmit)="verifyLogin()" [formGroup]="loginForm">
+            <form
+              class="mb-1"
+              (ngSubmit)="verifyLogin()"
+              [formGroup]="loginForm"
+            >
               <div class="mb-1">
-                <h6
-                  for="idName"
-                  class="form-label font-weight-bold"
-                  >Nombre</h6
-                >
+                <h6 for="idName" class="form-label font-weight-bold">Nombre</h6>
 
-                  <!--VALIDAR EL TIPO DE TEXTO (SÓLO ALFABÉTICO)-->
+                <!--VALIDAR EL TIPO DE TEXTO (SÓLO ALFABÉTICO)-->
                 <input
                   type="text"
                   class="form-control bg-dark-x border-0"
                   id="idName"
                   placeholder="Ingresa tu nombre"
                   aria-describedby="emailHelp"
-                  formControlName = "name"
+                  formControlName="name"
                 />
                 <div class="invalid-feedback"></div>
               </div>
               <div class="mb-3">
-                <h6
-                  for="idApellido"
-                  class="form-label font-weight-bold"
-                  >
-                  Apellido</h6>
+                <h6 for="idApellido" class="form-label font-weight-bold">
+                  Apellido
+                </h6>
 
-                  <!--VALIDAR EL TIPO DE TEXTO (SÓLO ALFABÉTICO)-->
+                <!--VALIDAR EL TIPO DE TEXTO (SÓLO ALFABÉTICO)-->
                 <input
                   type="text"
                   class="form-control bg-dark-x border-0 mb-2"
                   placeholder="Ingresa tu primer apellido"
                   id="idApellido"
-                  formControlName ="lastName"
+                  formControlName="lastName"
                 />
                 <div class="invalid-feedback"></div>
               </div>
-              <button type="submit" class="btn btn-primary" style="width: 16rem" [disabled]="!loginForm.valid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 16rem"
+                [disabled]="!loginForm.valid"
+              >
                 Iniciar sesión
               </button>
             </form>
           </div>
           <div class="text-center pt-sm-0 pb-sm-2 p-4 mt-auto w-100">
             <span class="d-inline-block mb-0">¿Aún no tienes cuenta?</span>
-            <br>
-            <a href="" class="text-light font-weight-bold text-decoration-none"
-              >Crea una ahora</a
-            >
+            <br />
+            <p-button
+              label="Crea una ahora"
+              [text]="true"
+              (click)="showCreateStudent()"
+            ></p-button>
           </div>
         </div>
       </div>
@@ -164,3 +169,4 @@
     ></script>
   </body>
 </html>
+<p-toast></p-toast>

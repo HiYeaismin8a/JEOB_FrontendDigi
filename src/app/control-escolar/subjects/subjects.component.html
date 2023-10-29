@@ -16,7 +16,7 @@
 
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
     <div class="main row">
-      <div class="col-11">
+      <div class="col-10">
         <p-table [value]="subjects" [tableStyle]="{ 'min-width': '60rem' }">
           <ng-template pTemplate="header">
             <tr>
@@ -29,11 +29,10 @@
               <th>Editar</th>
               <th>Ver más</th>
               <th>Eliminar</th>
-              <th>Agregar</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-subject>
-            <tr >
+            <tr [pEditableRow]="subject">
               <td>{{ subject.nombre }}</td>
               <td>{{ subject.costo | currency : "USD" }}</td>
               <td>
@@ -42,7 +41,7 @@
                   pButton
                   pRipple
                   type="button"
-                  icon="fas fa-pen"
+                  icon="pi pi-file-edit"
                   pInitEditableRow
                   (click)="showModalUpdateSubject(subject)"
                   class="btnEdits p-button-rounded p-button-text"
@@ -57,7 +56,7 @@
                   type="button"
                   icon="pi pi-eye"
                   pInitEditableRow
-                  (click)="showModalViewMoreInformation()"
+                  (click)="showModalViewMoreInformation(subject)"
                   class="btnEdits p-button-rounded p-button-text"
                 ></button>
               </td>
@@ -73,21 +72,21 @@
                   (click)="deleteSubject(subject)"
                 ></p-button>
               </td>
-              <td>
-                <p-button
-                id="testButton"
-                icon="pi pi pi-plus-circle"
-                [rounded]="true"
-                [text]="true"
-                [raised]="true"
-                severity="info"
-                (click)="showModalSubject()"
-              >
-              </p-button>
-              </td>
             </tr>
           </ng-template>
         </p-table>
+      </div>
+      <div class="col-2">
+        <p-button
+          id="testButton"
+          icon="pi pi pi-plus-circle"
+          [rounded]="true"
+          [text]="true"
+          [raised]="true"
+          severity="info"
+          (click)="showModalSubject()"
+        >
+        </p-button>
       </div>
     </div>
   </body>

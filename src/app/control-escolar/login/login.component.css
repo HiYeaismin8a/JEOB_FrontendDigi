@@ -1,18 +1,24 @@
 :root {
-  --dark: #16191C;
-  --dark-x: #1E2126;
+  --dark: #16191c;
+  --dark-x: #1e2126;
   --light: #ffffff;
 }
 
 body {
-  font-family: 'Spartan', sans-serif;
+  font-family: "Spartan", sans-serif;
   font-weight: 300;
   color: var(--light);
 }
 
-.text-light { color: var(--light) !important; }
-.bg-dark { background-color: var(--dark) !important; }
-.bg-dark-x { background-color: var(--dark-x); }
+.text-light {
+  color: var(--light) !important;
+}
+.bg-dark {
+  background-color: var(--dark) !important;
+}
+.bg-dark-x {
+  background-color: var(--dark-x);
+}
 
 .btn {
   min-height: 3.125rem;
@@ -29,17 +35,17 @@ body {
 }
 
 .img-1 {
-  background-image: url('../../../assets/images/img-1.jpg');
+  background-image: url("../../../assets/images/img-1.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .img-2 {
-  background-image: url('../../../assets/images/img-2.jpg');
+  background-image: url("../../../assets/images/img-2.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.form-label{
+.form-label {
   margin-bottom: 0rem !important;
 }

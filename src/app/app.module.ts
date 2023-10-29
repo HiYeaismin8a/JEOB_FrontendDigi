@@ -13,6 +13,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { HttpClientModule } from  '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
 import { LoginComponent } from './control-escolar/login/login.component';
+import { MessageService } from 'primeng/api';
 import { ModalStudentComponent } from './control-escolar/students/modals/modal-student/modal-student.component';
 import { ModalSubjectComponent } from './control-escolar/subjects/modals/modal-subject/modal-subject.component';
 import { ModalUpdateStudentComponent } from './control-escolar/students/modals/modal-update-student/modal-update-student.component';
@@ -59,7 +60,7 @@ import { ToastModule } from 'primeng/toast';
     MultiSelectModule
   ],
   exports:[FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [MessageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

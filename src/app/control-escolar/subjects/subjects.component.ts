@@ -13,29 +13,31 @@ import { SubjectsService } from 'src/app/services/subjects.service';
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
   styleUrls: ['./subjects.component.css'],
-  providers: [DialogService, MessageService]
+  providers: [DialogService, MessageService],
 })
 export class SubjectsComponent implements OnInit {
-
   ref: DynamicDialogRef | undefined;
-  student: StudentViewModel[]=[];
+  student: StudentViewModel[] = [];
   subjects: SubjectViewModel[] = [];
   selectedStudent: StudentViewModel | undefined;
-
 
   constructor(
     public dialogService: DialogService,
     public messageService: MessageService,
-    private subjectService: SubjectsService,
+    private subjectService: SubjectsService
   ) {}
 
   ngOnInit() {
     this.readAllSubjects();
-}
+  }
 
   ngOnDestroy() {
+    this.closeModals();
+  }
+
+  closeModals() {
     if (this.ref) {
-        this.ref.close();
+      this.ref.close();
     }
   }
 
@@ -62,6 +64,7 @@ export class SubjectsComponent implements OnInit {
           summary: 'Product Selected',
           detail: subject.nombre,
         });
+        this.subjects.push(subject);
       }
     });
 
@@ -81,7 +84,7 @@ export class SubjectsComponent implements OnInit {
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
-      data: {subject: {... subject}}
+      data: { subject },
     });
 
     this.ref.onClose.subscribe((subject: SubjectViewModel) => {
@@ -91,6 +94,7 @@ export class SubjectsComponent implements OnInit {
           summary: 'Product Selected',
           detail: subject.nombre,
         });
+        this.readAllSubjects();
       }
     });
 
@@ -103,13 +107,14 @@ export class SubjectsComponent implements OnInit {
     });
   }
 
-  showModalViewMoreInformation(){
+  showModalViewMoreInformation(subject: SubjectViewModel) {
     this.ref = this.dialogService.open(ModalViewMoreComponent, {
-      header: 'La materia de -- tiene los siguientes alumnos inscritos:',
+      header: '',
       width: '85%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
+      data: { subject },
     });
 
     this.ref.onClose.subscribe((subject: SubjectViewModel) => {
@@ -131,12 +136,13 @@ export class SubjectsComponent implements OnInit {
     });
   }
 
-
-  deleteSubject(student:StudentViewModel){
-    this.subjectService.deleteSubject(student.idAlumno).subscribe(response => {
-      this.readAllSubjects();
-
-    });
+  deleteSubject(subject: SubjectViewModel) {
+    this.subjectService
+      .deleteSubject(subject.idMateria!)
+      .subscribe((response) => {
+        if (response) {
+          this.readAllSubjects();
+        }
+      });
   }
-
 }

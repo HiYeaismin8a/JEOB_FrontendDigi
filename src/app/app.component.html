@@ -1,31 +1,35 @@
 <div class="buttonSlideNav">
-  <p-sidebar  [(visible)]="sidebarVisible" position="right" >
+  <p-sidebar [(visible)]="sidebarVisible" position="right">
+
     <div class="mt-1">
       <h5>
-        <a [routerLink]="['student']"> Estudiantes </a>
+        <a [routerLink]="['login']"> Login </a>
       </h5>
     </div>
+
     <div class="mt-5">
       <h5>
         <a [routerLink]="['subject']"> Materias </a>
       </h5>
-
     </div>
+
+    <div class="mt-5">
+      <h5>
+        <a [routerLink]="['student']"> Estudiantes </a>
+      </h5>
+    </div>
+
     <div class="mt-5">
       <h5>
         <a [routerLink]="['subject-student']"> Enlazar Materia-Estudiante </a>
       </h5>
-
     </div>
+
   </p-sidebar>
 
-  <button
-      (click)="sidebarVisible = true"
-      class="header__button">
-      <i class="pi pi-bars" style="font-size: 2rem"></i>
+  <button (click)="sidebarVisible = true" class="header__button">
+    <i class="pi pi-bars" style="font-size: 2rem"></i>
   </button>
-
 </div>
 
-<router-outlet ></router-outlet>
-
+<router-outlet></router-outlet>

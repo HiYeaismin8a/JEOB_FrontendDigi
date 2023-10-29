@@ -5,25 +5,50 @@
     <form (ngSubmit)="updateStudent()" [formGroup]="updateStudentForm">
       <div class="row">
         <div class="row p-lg-3">
-          <input type="text" pInputText formControlName="nombre" />
+          <label for="nombreStudent">Nombre</label>
+          <input
+            id="nombreStudent"
+            name="nombreStudent"
+            type="text"
+            pInputText
+            formControlName="nombre"
+          />
         </div>
         <div class="row p-lg-3">
-          <input type="text" pInputText formControlName="apellidoPaterno" />
+          <label for="apellidoPaterno">Apellido Paterno</label>
+          <input
+            id="apellidoPaterno"
+            type="text"
+            name="apellidoPaterno"
+            pInputText
+            formControlName="apellidoPaterno"
+          />
         </div>
         <div class="row p-lg-3">
-          <input type="text" pInputText formControlName="apellidoMaterno" />
+          <label for="apellidoMaterno">Apellido Materno</label>
+          <input
+            id="apellidoMaterno"
+            type="text"
+            name="apellidoMaterno"
+            pInputText
+            formControlName="apellidoMaterno"
+          />
         </div>
-
       </div>
       <div class="row mt-4">
         <div class="col-2">
-          <p-button type="button" [text]="true" severity="secondary"
+          <p-button
+            type="button"
+            [text]="true"
+            severity="secondary"
+            (onClick)="closeModals()"
             >Cancel</p-button
           >
         </div>
         <div class="col-2">
           <button
-            type="submit" [disabled]="!updateStudentForm.valid"
+            type="submit"
+            [disabled]="!updateStudentForm.valid"
             class="btn btn-primary"
             style="margin-left: 13rem"
           >

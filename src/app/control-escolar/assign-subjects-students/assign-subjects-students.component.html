@@ -1,22 +1,26 @@
 <div class="row">
-  <div class="col-4 m-5">
-    <h5>
-      Selecciona un estudiante:
-    </h5>
+  <div class="col-3 m-5">
+    <h5>Selecciona un estudiante:</h5>
   </div>
   <div class="col-4 m-5">
     <p-dropdown
-    [options]="students"
-    [(ngModel)]="selectedStudent"
-    optionLabel="name"
-    [style]="{'width':'100%'}"
-  ></p-dropdown>
+      [options]="students"
+      [(ngModel)]="selectedStudent"
+      optionLabel="nombre"
+      [style]="{ width: '100%' }"
+      (onChange)="loadSubjects()"
+    ></p-dropdown>
   </div>
 </div>
 
 <div class="row">
-  <div>
-    <p-table [value]="subjects" [tableStyle]="{ 'min-width': '60rem' }">
+  <div class="col-10">
+    <p-table
+      [value]="subjects"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      [(selection)]="subjectsSelected"
+      (selectionChange)="seeChanges()"
+    >
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="name" style="width: 20%">
@@ -28,16 +32,19 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-subject>
-        <tr >
+        <tr>
           <td>{{ subject.nombre }}</td>
           <td>
-              <!--VALOR QUE TRAE EL ASIGNADO Y SIN ASIGNAR-->
-              <p-checkbox formControlName="materia" value="New York" ></p-checkbox>
-              <!--VALOR QUE TRAE EL ASIGNADO Y SIN ASIGNAR-->
+            <!--VALOR QUE TRAE EL ASIGNADO Y SIN ASIGNAR-->
+            <p-tableCheckbox [value]="subject"></p-tableCheckbox>
+            <!--VALOR QUE TRAE EL ASIGNADO Y SIN ASIGNAR-->
           </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
-
+  <div class="col-2">
+    <p-toast></p-toast>
+    <p-button type="button" (onClick)="assign()"> Enlazar </p-button>
+  </div>
 </div>
