@@ -1,18 +1,12 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  StudentViewModel,
-  StudentViewModelForm,
-} from 'src/app/interfaces/StudentViewModel';
-import {
-  SubjectViewModel,
-  SubjectViewModelForm,
-} from 'src/app/interfaces/SubjectViewModel';
-
 import { Component } from '@angular/core';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import {
+  StudentViewModel,
+} from 'src/app/interfaces/StudentViewModel';
 import { StudentsService } from 'src/app/services/students.service';
-import { SubjectsService } from 'src/app/services/subjects.service';
-import { ThisReceiver } from '@angular/compiler';
+import {
+  SubjectViewModel,
+} from 'src/app/interfaces/SubjectViewModel';
 
 @Component({
   selector: 'app-modal-view-more-information-student',

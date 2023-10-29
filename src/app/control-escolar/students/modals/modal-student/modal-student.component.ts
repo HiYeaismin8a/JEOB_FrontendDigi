@@ -24,15 +24,15 @@ export class ModalStudentComponent {
     this.addStudentForm = new FormGroup({
       nombre: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       apellidoPaterno: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       apellidoMaterno: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
     });
   }

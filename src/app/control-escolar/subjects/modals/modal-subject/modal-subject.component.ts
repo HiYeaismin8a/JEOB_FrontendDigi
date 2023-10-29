@@ -23,11 +23,11 @@ export class ModalSubjectComponent {
     this.addSubjectForm = new FormGroup({
       nombre: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       costo: new FormControl(0, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[0-9]+/)],
       }),
     });
   }

@@ -27,15 +27,15 @@ export class ModalUpdateStudentComponent {
     this.updateStudentForm = new FormGroup({
       nombre: new FormControl(this.student.nombre, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       apellidoPaterno: new FormControl(this.student.apellidoPaterno, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       apellidoMaterno: new FormControl(this.student.apellidoMaterno, {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
     });
   }

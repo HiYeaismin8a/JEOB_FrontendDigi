@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       name: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
       lastName: new FormControl('', {
         nonNullable: true,
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.pattern(/[a-zA-Z]+/)],
       }),
     });
   }
