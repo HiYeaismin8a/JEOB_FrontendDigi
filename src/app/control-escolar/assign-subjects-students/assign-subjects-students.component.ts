@@ -86,7 +86,6 @@ export class AssignSubjectsStudentsComponent implements OnInit {
         //Ya están marcadas.
         this.show();
       });
-    console.log(this.subjectsSelected.map((x) => x.id));
   }
 
   show() {

@@ -33,10 +33,7 @@ export class ModalViewMoreInformationStudentComponent {
       .subscribe((response) => {
         this.subjects = response;
         this.cost = response.reduce((v, x) => v + x.costo, 0);
-        console.log(
-          response.reduce((v, x) => v + x.costo, 0),
-          response[0].costo
-        );
       });
   }
+  
 }

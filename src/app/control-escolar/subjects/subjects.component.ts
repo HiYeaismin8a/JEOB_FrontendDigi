@@ -88,7 +88,6 @@ export class SubjectsComponent implements OnInit {
     });
 
     this.ref.onClose.subscribe((subject) => {
-      console.log("EXITOSAMENTE");
       if (subject) {
         this.messageService.add({
           severity: 'success',
@@ -146,4 +145,5 @@ export class SubjectsComponent implements OnInit {
         }
       });
   }
+  
 }

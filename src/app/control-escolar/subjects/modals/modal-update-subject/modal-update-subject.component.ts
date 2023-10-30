@@ -46,7 +46,6 @@ export class ModalUpdateSubjectComponent {
           ...this.updateSubjectForm.getRawValue(),
         })
         .subscribe((response) => {
-          console.log("cfaneovjalne", response);
           this.ref.close(response);
         });
     }
@@ -57,4 +56,5 @@ export class ModalUpdateSubjectComponent {
       this.ref.close();
     }
   }
+  
 }
