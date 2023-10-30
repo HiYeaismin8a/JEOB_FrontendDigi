@@ -6,12 +6,14 @@ import {
 } from 'src/app/interfaces/SubjectViewModel';
 
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
   selector: 'app-modal-update-subject',
   templateUrl: './modal-update-subject.component.html',
   styleUrls: ['./modal-update-subject.component.css'],
+  providers: [MessageService],
 })
 export class ModalUpdateSubjectComponent {
   public updateSubjectForm!: FormGroup<SubjectViewModelForm>;
@@ -20,7 +22,8 @@ export class ModalUpdateSubjectComponent {
   constructor(
     private subjectService: SubjectsService,
     private ref: DynamicDialogRef,
-    private config: DynamicDialogConfig
+    private config: DynamicDialogConfig,
+    private messageService: MessageService,
   ) {
     this.subject = config.data.subject;
     this.updateSubjectForm = new FormGroup({
@@ -43,6 +46,7 @@ export class ModalUpdateSubjectComponent {
           ...this.updateSubjectForm.getRawValue(),
         })
         .subscribe((response) => {
+          console.log("cfaneovjalne", response);
           this.ref.close(response);
         });
     }

@@ -51,8 +51,8 @@ export class StudentsComponent implements OnInit {
     ref.onClose.subscribe((student: StudentViewModel) => {
       if (student) {
         this.messageService.add({
-          severity: 'info',
-          summary: 'Product Selected',
+          severity: 'success',
+          summary: 'Actualización exitosa',
           detail: student.nombre,
         });
         this.readAllStudent();

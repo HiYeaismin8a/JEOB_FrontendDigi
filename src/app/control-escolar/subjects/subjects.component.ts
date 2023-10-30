@@ -87,13 +87,14 @@ export class SubjectsComponent implements OnInit {
       data: { subject },
     });
 
-    this.ref.onClose.subscribe((subject: SubjectViewModel) => {
+    this.ref.onClose.subscribe((subject) => {
+      console.log("EXITOSAMENTE");
       if (subject) {
         this.messageService.add({
-          severity: 'info',
-          summary: 'Product Selected',
-          detail: subject.nombre,
+          severity: 'success',
+          summary: 'Actualización exitosa'
         });
+
         this.readAllSubjects();
       }
     });

@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'ERROR',
-            detail: 'No está registrado en la Base da Datos',
+            detail: 'No está registrado en la Base de Datos',
           });
           return;
         });
@@ -72,8 +72,8 @@ export class LoginComponent implements OnInit {
     ref.onClose.subscribe((student: StudentViewModel) => {
       if (student) {
         this.messageService.add({
-          severity: 'info',
-          summary: 'Product Selected',
+          severity: 'success',
+          summary: 'Alumno creado exitosamente',
           detail: student.nombre,
         });
         this.students.push(student);
